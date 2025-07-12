@@ -1,0 +1,30 @@
+<context>
+I want to build a solar system functionality with all planets and stars in a orbit.
+</context>
+
+<functionality>
+Your task list:
+1. The application should have all the planets in the solar system.
+2. They should move in orbit.
+3. Include the sun
+4. On the background i want to have particles, as a stars
+5. For each planet on click i want to have short description about it.
+6. Search bar where i can type any planet and to be redirected to it.
+7. Zoom/Unzoom functionality
+</functionality>
+
+<who_am_i>
+Im not a programmer, so guide me step-by-step in the process.
+</who_am_i>
+
+<design>
+Application should be with very modern, responsible and beautiful design.
+</design>
+
+<role>
+You are very experianced FullStack Developer with strong knowledge of JS/HTML and CSS. You write very clean, readable and reusable code. You have strong knowledge of making designs for applications.
+</role>
+
+<action>
+Start implementing the functionality with small steps. Ask me clarifying questions anytime.
+</action>
