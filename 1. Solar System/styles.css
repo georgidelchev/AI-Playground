@@ -1,0 +1,265 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    background-color: #000;
+    touch-action: none; /* Prevent default touch behavior */
+}
+
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* UI Controls */
+.controls {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.search-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-container input {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    width: 200px;
+}
+
+.search-container input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.zoom-controls {
+    display: flex;
+    gap: 5px;
+}
+
+.zoom-btn {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.zoom-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+/* Planet Info Modal */
+.planet-info {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 20px 30px;
+    color: white;
+    display: none;
+    animation: slideUp 0.3s ease;
+    max-width: 500px;
+    text-align: center;
+    z-index: 200;
+    pointer-events: auto;
+}
+
+.planet-info h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #fff;
+}
+
+.planet-info p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.planet-info::after {
+    content: "Click anywhere or press Esc to close";
+    display: block;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 10px;
+    font-style: italic;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+/* Loading Screen */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    z-index: 1000;
+}
+
+/* Instructions */
+.instructions {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    padding: 15px 20px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.instructions h3 {
+    color: white;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+/* Exit tracking button */
+.exit-tracking {
+    position: fixed;
+    top: 80px;
+    left: 20px;
+    background: rgba(255, 100, 100, 0.2);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 100, 100, 0.3);
+    border-radius: 20px;
+    padding: 8px 16px;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    display: none;
+    z-index: 101;
+}
+
+.exit-tracking:hover {
+    background: rgba(255, 100, 100, 0.3);
+}
+
+/* Mobile responsive design */
+@media (max-width: 768px) {
+    .controls {
+        top: 10px;
+        left: 10px;
+        gap: 8px;
+    }
+    
+    .search-container {
+        padding: 8px 15px;
+    }
+    
+    .search-container input {
+        width: 150px;
+        font-size: 14px;
+    }
+    
+    .zoom-controls {
+        display: none; /* Hide zoom buttons on mobile - using pinch instead */
+    }
+    
+    .instructions {
+        bottom: 10px;
+        right: 10px;
+        padding: 10px 15px;
+        font-size: 12px;
+    }
+    
+    .instructions h3 {
+        font-size: 14px;
+        margin-bottom: 5px;
+    }
+    
+    .planet-info {
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        transform: none;
+        max-width: none;
+        padding: 15px 20px;
+    }
+    
+    .planet-info h2 {
+        font-size: 20px;
+    }
+    
+    .planet-info p {
+        font-size: 14px;
+    }
+    
+    .planet-info::after {
+        content: "Tap anywhere to close";
+    }
+    
+    .exit-tracking {
+        top: 60px;
+        left: 10px;
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-container {
+        padding: 6px 12px;
+    }
+    
+    .search-container input {
+        width: 120px;
+        font-size: 12px;
+    }
+    
+    .instructions {
+        display: none; /* Hide instructions on very small screens */
+    }
+}

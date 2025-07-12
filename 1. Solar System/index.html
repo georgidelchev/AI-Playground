@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="loading">Loading Solar System...</div>
+    
+    <div id="canvas-container"></div>
+    
+    <div class="controls">
+        <div class="search-container">
+            <span>🔍</span>
+            <input type="text" id="planet-search" placeholder="Search planet...">
+        </div>
+        <div class="zoom-controls">
+            <button class="zoom-btn" id="zoom-in">+</button>
+            <button class="zoom-btn" id="zoom-out">-</button>
+        </div>
+    </div>
+    
+    <div class="planet-info" id="planet-info">
+        <h2 id="planet-name"></h2>
+        <p id="planet-description"></p>
+    </div>
+    
+    <div class="exit-tracking" id="exit-tracking" onclick="exitTracking()">
+        ← Exit Planet View
+    </div>
+    
+    <div class="instructions">
+        <h3>Controls</h3>
+        <span class="desktop-controls">
+            🖱️ Click & Drag - Rotate view<br>
+            🎯 Click - Select planet/sun<br>
+            🔍 Scroll - Zoom in/out<br>
+            🔎 Search - Track planet (bird's eye)<br>
+            ⎋ Esc/Click - Close info
+        </span>
+        <span class="mobile-controls" style="display: none;">
+            👆 Drag - Rotate view<br>
+            👆 Tap - Select planet/sun<br>
+            🤏 Pinch - Zoom in/out<br>
+            🔎 Search - Track planet (bird's eye)<br>
+            👆 Tap anywhere - Close info
+        </span>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
